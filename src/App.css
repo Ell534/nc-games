@@ -1,3 +1,34 @@
 .App {
   text-align: center;
 }
+
+ul {
+  list-style-type: none;
+}
+
+.categoryBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 800px) {
+  .reviewsList {
+    flex-direction: column;
+  }
+  .categoryBar {
+    flex-wrap: wrap;
+  }
+}
+
+
+.reviewsList__img {
+  height: 270px;
+}
