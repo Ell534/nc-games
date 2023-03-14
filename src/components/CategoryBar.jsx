@@ -1,7 +1,33 @@
-const CategoryBar = () => {
+import { useState, useEffect } from 'react';
+import { getCategories } from '../utils';
+
+const CategoryBar = ({ categories, setCategories, setCategory }) => {
+  useEffect(() => {
+    getCategories().then((categoriesFromApi) => {
+      setCategories(categoriesFromApi);
+    });
+  }, [setCategories]);
+
   return (
     <>
-      <h2>one two three four five six seven</h2>
+      <h2>Categories</h2>
+      <section>
+        <ul className='categoryBar'>
+          {categories.map((category) => {
+            return (
+              <li key={category.slug}>
+                <button
+                  onClick={() => {
+                    setCategory(category.slug);
+                  }}
+                >
+                  {category.slug}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
     </>
   );
 };

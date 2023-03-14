@@ -1,15 +1,19 @@
 import CategoryBar from '../components/CategoryBar';
 import ReviewCards from './ReviewCards';
+import { useState } from 'react';
 
-const Reviews = () => {
+const Reviews = ({ categories, setCategories }) => {
+  const [order, setOrder] = useState('');
+  const [sortBy, setSortBy] = useState('');
+  const [category, setCategory] = useState('')
+
   return (
     <>
-      <CategoryBar />
-      <section>
+      <CategoryBar categories={categories} setCategories={setCategories} setCategory={setCategory} />
         <h3>Reviews</h3>
-        <section>Sort By Options Order By Options</section>
-        Review Cards Here
-        <ReviewCards />
+        <p>*placeholder*Sort By Options Order By Options*placeholder*</p>
+      <section>
+        <ReviewCards category={category} order={order} sortBy={sortBy} />
       </section>
     </>
   );

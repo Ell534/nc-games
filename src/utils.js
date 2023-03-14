@@ -10,4 +10,10 @@ const getReviews = () => {
   });
 };
 
-export { getReviews };
+const getCategories = () => {
+  return api.get('/categories').then(({data}) => {
+    return data.categories;
+  })
+}
+
+export { getReviews, getCategories };
