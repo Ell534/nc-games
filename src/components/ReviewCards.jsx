@@ -1,14 +1,20 @@
 import { getReviews } from '../utils';
 import { useState, useEffect } from 'react';
 
-const ReviewCards = ({ category, order, sortBy }) => {
+const ReviewCards = ({ category, order, sortBy, isLoading, setIsLoading }) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
+    setIsLoading(true);
     getReviews(category, order, sortBy).then((reviewsFromApi) => {
       setReviews(reviewsFromApi);
+      setIsLoading(false);
     });
   }, []);
+
+  if(isLoading) {
+    return <h4>Reviews loading, please wait...</h4>
+  }
 
   return (
     <>

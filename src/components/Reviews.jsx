@@ -2,7 +2,7 @@ import CategoryBar from '../components/CategoryBar';
 import ReviewCards from './ReviewCards';
 import { useState } from 'react';
 
-const Reviews = ({ categories, setCategories }) => {
+const Reviews = ({ categories, setCategories, isLoading, setIsLoading }) => {
   const [order, setOrder] = useState('');
   const [sortBy, setSortBy] = useState('');
   const [category, setCategory] = useState('')
@@ -13,7 +13,7 @@ const Reviews = ({ categories, setCategories }) => {
         <h3>Reviews</h3>
         <p>*placeholder*Sort By Options Order By Options*placeholder*</p>
       <section>
-        <ReviewCards category={category} order={order} sortBy={sortBy} />
+        <ReviewCards category={category} order={order} sortBy={sortBy} isLoading={isLoading} setIsLoading={setIsLoading} />
       </section>
     </>
   );
