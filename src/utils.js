@@ -10,10 +10,16 @@ const getReviews = () => {
   });
 };
 
+const getReviewById = (review_id) => {
+  return api.get(`/reviews/${review_id}`).then(({data}) => {
+    return data.review;
+  })
+}
+
 const getCategories = () => {
   return api.get('/categories').then(({data}) => {
     return data.categories;
   })
 }
 
-export { getReviews, getCategories };
+export { getReviews, getCategories, getReviewById };

@@ -1,5 +1,6 @@
 import { getReviews } from '../utils';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const ReviewCards = ({ category, order, sortBy, isLoading, setIsLoading }) => {
   const [reviews, setReviews] = useState([]);
@@ -12,22 +13,24 @@ const ReviewCards = ({ category, order, sortBy, isLoading, setIsLoading }) => {
     });
   }, []);
 
-  if(isLoading) {
-    return <h4>Reviews loading, please wait...</h4>
+  if (isLoading) {
+    return <h4>Reviews loading, please wait...</h4>;
   }
 
   return (
     <>
-      <ul className='reviewsList'>
+      <ul className="reviewsList">
         {reviews.map((review) => {
           return (
             <li key={review.review_id}>
-              <h4>Title: {review.title}</h4>
-              <img
-                src={review.review_img_url}
-                alt="The boardgame that the review relates to"
-                className="reviewsList__img"
-              />
+              <Link to={`/reviews/${review.review_id}`}>
+                <h4>Title: {review.title}</h4>
+                <img
+                  src={review.review_img_url}
+                  alt="The boardgame that the review relates to"
+                  className="reviewsList__img"
+                />
+              </Link>
               <p>Category: {review.category}</p>
             </li>
           );
