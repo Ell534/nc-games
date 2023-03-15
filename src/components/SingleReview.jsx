@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { getReviewById } from '../utils';
 import { useState, useEffect } from 'react';
 import CategoryBar from './CategoryBar';
+import Comments from './Comments';
 
 const SingleReview = ({
   isLoading,
@@ -21,7 +22,6 @@ const SingleReview = ({
     });
   }, [review_id]);
 
-  console.log(review);
   const {
     title,
     review_img_url,
@@ -51,6 +51,9 @@ const SingleReview = ({
           <li>Comments: {comment_count}</li>
         </ul>
         <p className='singleReview__body'>{review_body}</p>
+      </section>
+      <section>
+        <Comments review_id={review_id}/>
       </section>
     </>
   );
