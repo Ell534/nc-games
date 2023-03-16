@@ -9,6 +9,7 @@ const SingleReview = ({
   setIsLoading,
   categories,
   setCategories,
+  user,
 }) => {
   const [review, setReview] = useState([]);
   const [userVote, setUserVote] = useState(0);
@@ -68,7 +69,7 @@ const SingleReview = ({
         {votingErr ? <p className='singleReview__voteError'>Your vote didn't go through, please try again later.</p> : null}
       </section>
       <section>
-        <Comments review_id={review_id}/>
+        <Comments review_id={review_id} user={user}/>
       </section>
     </>
   );

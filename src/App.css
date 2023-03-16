@@ -37,7 +37,7 @@ ul {
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto auto auto auto;
-  grid-template-areas: 
+  grid-template-areas:
     'title title'
     'img details'
     'body body'
@@ -69,4 +69,22 @@ ul {
 
 .singleReview__voteError {
   grid-area: voteError;
+}
+
+.commentForm {
+  display: grid;
+  grid-template-columns: 35vw;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    'body'
+    'btn';
+  justify-content: center;
+}
+
+.commentForm__body {
+  grid-area: body;
+}
+
+.commentForm__btn {
+  grid-area: btn;
 }

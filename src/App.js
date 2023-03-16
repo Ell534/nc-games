@@ -10,6 +10,7 @@ import { useState } from 'react';
 function App() {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState('grumpy19');
   return (
     <div className="App">
       <Header />
@@ -40,6 +41,7 @@ function App() {
               setIsLoading={setIsLoading}
               categories={categories}
               setCategories={setCategories}
+              user={user}
             />
           }
         />

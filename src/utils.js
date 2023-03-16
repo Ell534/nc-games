@@ -37,4 +37,11 @@ const getCommentsByReviewId = (review_id) => {
   });
 };
 
-export { getReviews, getCategories, getReviewById, getCommentsByReviewId, voteForReview };
+const postComment = (review_id, commentRequest) => {
+  return api.post(`/reviews/${review_id}/comments`, commentRequest).then(({data}) => {
+    console.log(data.comment);
+    return data.comment
+  })
+}
+
+export { getReviews, getCategories, getReviewById, getCommentsByReviewId, voteForReview, postComment };
