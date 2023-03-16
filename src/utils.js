@@ -5,27 +5,36 @@ const api = axios.create({
 });
 
 const getReviews = () => {
-  return api.get('/reviews').then(({data}) => {
+  return api.get('/reviews').then(({ data }) => {
     return data.reviews;
   });
 };
 
 const getReviewById = (review_id) => {
-  return api.get(`/reviews/${review_id}`).then(({data}) => {
+  return api.get(`/reviews/${review_id}`).then(({ data }) => {
     return data.review;
-  })
-}
+  });
+};
+
+const voteForReview = (review_id) => {
+  return api
+    .patch(`/reviews/${review_id}`, { inc_votes: 1 })
+    .then(({data}) => {
+      console.log(data.review);
+      return data.review;
+    });
+};
 
 const getCategories = () => {
-  return api.get('/categories').then(({data}) => {
+  return api.get('/categories').then(({ data }) => {
     return data.categories;
-  })
-}
+  });
+};
 
 const getCommentsByReviewId = (review_id) => {
-  return api.get(`/reviews/${review_id}/comments`).then(({data}) => {
+  return api.get(`/reviews/${review_id}/comments`).then(({ data }) => {
     return data.comments;
-  })
-}
+  });
+};
 
-export { getReviews, getCategories, getReviewById, getCommentsByReviewId };
+export { getReviews, getCategories, getReviewById, getCommentsByReviewId, voteForReview };
