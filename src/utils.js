@@ -22,4 +22,10 @@ const getCategories = () => {
   })
 }
 
-export { getReviews, getCategories, getReviewById };
+const getCommentsByReviewId = (review_id) => {
+  return api.get(`/reviews/${review_id}/comments`).then(({data}) => {
+    return data.comments;
+  })
+}
+
+export { getReviews, getCategories, getReviewById, getCommentsByReviewId };
