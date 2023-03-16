@@ -2,16 +2,23 @@ import { getReviews } from '../utils';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const ReviewCards = ({ category, order, sortBy, isLoading, setIsLoading }) => {
+const ReviewCards = ({
+  order,
+  sortBy,
+  isLoading,
+  setIsLoading,
+  searchParams,
+}) => {
   const [reviews, setReviews] = useState([]);
+  const categoryQuery = searchParams.get('category');
 
   useEffect(() => {
     setIsLoading(true);
-    getReviews(category, order, sortBy).then((reviewsFromApi) => {
+    getReviews(categoryQuery).then((reviewsFromApi) => {
       setReviews(reviewsFromApi);
       setIsLoading(false);
     });
-  }, []);
+  }, [categoryQuery, setIsLoading]);
 
   if (isLoading) {
     return <h4>Reviews loading, please wait...</h4>;
