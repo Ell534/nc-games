@@ -10,7 +10,7 @@ const CommentsCards = ({ commentsList, setCommentsList, review_id }) => {
       setCommentsList(commentsFromApi);
       setCommentsLoading(false);
     });
-  }, []);
+  }, [review_id, setCommentsList]);
 
   if (commentsLoading) {
     return <h4>Comments are loading, please wait...</h4>;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import CommentsCards from './CommentsCards';
 import { postComment } from '../utils';
 

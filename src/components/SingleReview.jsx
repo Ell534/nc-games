@@ -23,7 +23,7 @@ const SingleReview = ({
       setReview(reviewFromApi[0]);
       setIsLoading(false);
     });
-  }, [review_id]);
+  }, [review_id, setIsLoading]);
 
   const onClick = () => {
     setVotingErr(false);
