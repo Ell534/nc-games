@@ -4,14 +4,18 @@ const api = axios.create({
   baseURL: 'https://nc-games-be-project-oudm.onrender.com/api',
 });
 
-const getReviews = (category) => {
-  return api.get(`/reviews`, {
-    params: {
-      category
-    }
-  }).then(({ data }) => {
-    return data.reviews;
-  });
+const getReviews = (category, sort_by = 'title', order = 'asc') => {
+  return api
+    .get(`/reviews`, {
+      params: {
+        category,
+        sort_by,
+        order,
+      },
+    })
+    .then(({ data }) => {
+      return data.reviews;
+    });
 };
 
 const getReviewById = (review_id) => {
@@ -23,7 +27,7 @@ const getReviewById = (review_id) => {
 const voteForReview = (review_id) => {
   return api
     .patch(`/reviews/${review_id}`, { inc_votes: 1 })
-    .then(({data}) => {
+    .then(({ data }) => {
       return data.review;
     });
 };
@@ -41,9 +45,18 @@ const getCommentsByReviewId = (review_id) => {
 };
 
 const postComment = (review_id, commentRequest) => {
-  return api.post(`/reviews/${review_id}/comments`, commentRequest).then(({data}) => {
-    return data.comment
-  })
-}
+  return api
+    .post(`/reviews/${review_id}/comments`, commentRequest)
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
 
-export { getReviews, getCategories, getReviewById, getCommentsByReviewId, voteForReview, postComment };
+export {
+  getReviews,
+  getCategories,
+  getReviewById,
+  getCommentsByReviewId,
+  voteForReview,
+  postComment,
+};
