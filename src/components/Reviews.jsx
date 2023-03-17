@@ -10,10 +10,10 @@ const Reviews = ({
   isLoading,
   setIsLoading,
   searchParams,
-  setSearchParams
+  setSearchParams,
 }) => {
-  const [order, setOrder] = useState('');
   const [sortBy, setSortBy] = useState('');
+  const [order, setOrder] = useState('');
 
   return (
     <>
@@ -26,13 +26,43 @@ const Reviews = ({
         setSearchParams={setSearchParams}
       />
       <h3>Reviews</h3>
-      <p>*placeholder*Sort By Options Order By Options*placeholder*</p>
+      <section>
+        <label htmlFor="sort">Sort reviews by...</label>
+        <select
+          id="sort"
+          value={sortBy}
+          onChange={(event) => {
+            setSortBy(event.target.value);
+            const newSearchParams = new URLSearchParams(searchParams);
+            newSearchParams.set('sort_by', event.target.value);
+            setSearchParams(newSearchParams);
+          }}
+        >
+          <option value="title">Title</option>
+          <option value="owner">Review Author</option>
+          <option value="reviews.created_at">Review Date</option>
+          <option value="comment_count">Comments</option>
+          <option value="reviews.votes">Votes</option>
+        </select>
+        <label htmlFor="order">Order reviews...</label>
+        <select
+          id="order"
+          value={order}
+          onChange={(event) => {
+            setOrder(event.target.value);
+            const newSearchParams = new URLSearchParams(searchParams);
+            newSearchParams.set('order', event.target.value);
+            setSearchParams(newSearchParams);
+          }}
+        >
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </section>
       <section>
         <ReviewCards
           searchParams={searchParams}
           category={category}
-          order={order}
-          sortBy={sortBy}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
         />

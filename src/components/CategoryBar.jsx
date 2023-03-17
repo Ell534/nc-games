@@ -19,6 +19,7 @@ const CategoryBar = ({
     });
   }, [setCategories]);
 
+
   if (categoriesLoading) {
     return <p>Categories loading, please wait...</p>;
   }
