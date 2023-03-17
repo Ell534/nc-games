@@ -15,6 +15,7 @@ function App() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [user, setUser] = useState('grumpy19');
+ 
   return (
     <div className="App">
       <Header />
@@ -29,6 +30,7 @@ function App() {
               setCategory={setCategory}
               searchParams={searchParams}
               setSearchParams={setSearchParams}
+              setUser={setUser}
             />
           }
         />
