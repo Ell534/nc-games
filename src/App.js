@@ -14,6 +14,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const [user, setUser] = useState('grumpy19');
   return (
     <div className="App">
       <Header />
@@ -54,6 +55,7 @@ function App() {
               setIsLoading={setIsLoading}
               categories={categories}
               setCategories={setCategories}
+              user={user}
             />
           }
         />

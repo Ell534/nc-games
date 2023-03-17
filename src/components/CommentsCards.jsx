@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getCommentsByReviewId } from '../utils';
 
-const CommentsCards = ({ review_id }) => {
-  const [commentsList, setCommentsList] = useState([]);
+const CommentsCards = ({ commentsList, setCommentsList, review_id }) => {
   const [commentsLoading, setCommentsLoading] = useState(true);
 
   useEffect(() => {
