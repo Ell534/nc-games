@@ -12,8 +12,8 @@ const Reviews = ({
   searchParams,
   setSearchParams,
 }) => {
-  const [sortBy, setSortBy] = useState('title');
-  const [order, setOrder] = useState('asc');
+  const [sortBy, setSortBy] = useState('');
+  const [order, setOrder] = useState('');
 
   return (
     <>

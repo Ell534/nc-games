@@ -4,7 +4,13 @@ const api = axios.create({
   baseURL: 'https://nc-games-be-project-oudm.onrender.com/api',
 });
 
-const getReviews = (category, sort_by = 'title', order = 'asc') => {
+const getReviews = (category, sort_by, order) => {
+  if (sort_by === null) {
+    sort_by = 'title';
+  }
+  if (order === null) {
+    order = 'asc';
+  }
   return api
     .get(`/reviews`, {
       params: {
