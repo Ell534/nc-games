@@ -71,6 +71,7 @@ ul {
   grid-area: voteError;
 }
 
+
 .commentForm {
   display: grid;
   grid-template-columns: 35vw;
