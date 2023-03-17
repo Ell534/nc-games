@@ -20,7 +20,6 @@ const voteForReview = (review_id) => {
   return api
     .patch(`/reviews/${review_id}`, { inc_votes: 1 })
     .then(({data}) => {
-      console.log(data.review);
       return data.review;
     });
 };
@@ -39,7 +38,6 @@ const getCommentsByReviewId = (review_id) => {
 
 const postComment = (review_id, commentRequest) => {
   return api.post(`/reviews/${review_id}/comments`, commentRequest).then(({data}) => {
-    console.log(data.comment);
     return data.comment
   })
 }

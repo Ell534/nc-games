@@ -14,23 +14,18 @@ const Comments = ({ review_id, user }) => {
   const commentSubmit = (event) => {
     event.preventDefault();
     setSubmitComment(true);
+    setCommentError(false);
+    postComment(review_id, commentRequest).then((commentResponse) => {
+      setCommentsList((currentComments) => {
+        return [commentResponse, ...currentComments]
+      })
+      setSubmitComment(false);
+      commentRequest.body = '';
+    }).catch(() => {
+      setCommentError(true)
+    })
   };
 
-  useEffect(() => {
-    if (submitComment) {
-      setCommentError(false);
-      postComment(review_id, commentRequest)
-        .then((commentResponse) => {
-          setCommentsList([commentResponse, ...commentsList]);
-          setSubmitComment(false);
-          commentRequest.body = '';
-          console.log(commentsList);
-        })
-        .catch(() => {
-          setCommentError(true);
-        });
-    }
-  }, [submitComment]);
 
   return (
     <>
